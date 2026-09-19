@@ -1,239 +1,318 @@
-⚡ FF Long Bio — Free Fire Bio Tools
+# XEROX_MODS — Free Fire Friend Request API
 
-ff-long-bio.is-great.org is a free web-based toolkit for Free Fire players, focused on long/unique bio creation and related token utilities.
-
-🌐 Website: https://ff-long-bio.is-great.org/
+A Flask-based Free Fire utility API designed to process friend-request operations using configured account credentials, regional servers, JWT authentication, and player-information APIs.
 
 ---
 
-✨ Features
+## 📌 Source Information
 
-🎨 FF Long Bio
+* **Source Creator:** [XEROX_MODS](https://t.me/XEROX_MODS)
+* **Telegram Channel:** [SEXTYMODS](https://t.me/SEXTYMODS)
 
-Create and customize a Free Fire Long Bio with:
-
-- Custom colors
-- Bold text
-- Italic text
-- Underlined text
-- Live bio preview
-- Bio presets
-- Custom color picker
-- Character counter
-- Easy copy functionality
-
-🔑 Token Tools
-
-The website includes tools related to:
-
-- EAT tokens
-- JWT tokens
-- Free Fire access tokens
-- Token conversion
-- Token display and copying
-- Token transfer between the token and bio tools
-
-«Note: Use token-related functionality only with accounts and credentials you are authorized to access. Never share private access tokens publicly.»
-
-🎬 Video Tutorials
-
-The website includes a dynamic tutorial slider with:
-
-- YouTube tutorials
-- Thumbnail previews
-- Automatic slideshow
-- Previous/next navigation
-- Tutorial dots/navigation
-- Dynamically loaded tutorial configuration
-
-📱 Responsive Design
-
-The interface is designed for mobile and desktop browsers with:
-
-- Mobile-first layout
-- Responsive cards
-- Bottom navigation
-- Touch-friendly controls
-- Glassmorphism/cyberpunk styling
-- Animated buttons and effects
+> **Important:** Please do not remove, modify, hide, or replace the original creator credit when using, modifying, or sharing this source.
 
 ---
 
-🎨 Design
+## 🚀 Features
 
-The website uses a modern cyberpunk / glassmorphism interface.
-
-Main colors
-
-- 🟣 Purple: "#d946ef"
-- 🟪 Violet: "#8b5cf6"
-- 🟢 Success Green: "#22c55e"
-- ⚫ Background: "#030014"
-
-Technologies
-
-- HTML5
-- CSS3
-- JavaScript
-- Tailwind CSS CDN
-- Font Awesome
-- Google Fonts
-- Fetch API
-- Session Storage
-- Responsive Web Design
+* Flask REST API
+* Free Fire regional server support
+* Multiple region configuration
+* Account loading from text files
+* Automatic JWT token retrieval
+* Background JWT token refresh
+* Cached JWT tokens for accounts
+* Player information lookup
+* Friend-request processing
+* Multi-threaded account processing
+* Health/status endpoint
+* Region-specific account files
+* Configurable request count
+* JSON API responses
+* Basic request error handling
 
 ---
 
-🔍 SEO
+## 🌍 Supported Regions
 
-The website contains SEO metadata including:
+The source currently contains configuration for the following regions:
 
-- Custom page title
-- Meta description
-- Keywords
-- Canonical URL
-- Open Graph metadata
-- Twitter Card metadata
-- JSON-LD structured data
-- Search-engine indexing configuration
-
-Website metadata
-
-Title:
-
-«ff-long-bio.is-great.org | Free Fire Token & Bio»
-
-Description:
-
-«Free Fire EAT / JWT / Access Token Generator and Long Bio Changer. Fast, free, and safe.»
+| Region Code | Server Name |
+| :--- | :--- |
+| **IND** | India |
+| **ME** | Middle East |
+| **VN** | Vietnam |
+| **BD** | Bangladesh |
+| **PK** | Pakistan |
+| **SG** | Singapore |
+| **BR** | Brazil |
+| **NA** | North America |
+| **ID** | Indonesia |
+| **RU** | Russia |
+| **TH** | Thailand |
 
 ---
 
-🧩 Website Structure
+## 📁 Project Structure
 
-ff-long-bio.is-great.org/
+```text
+project/
 │
-├── /
-│   └── Home page
+├── main.py
+├── byte.py
+├── accounts.txt
 │
-├── /bio
-│   └── Free Fire Long Bio tool
+├── Account_ind.txt
+├── Account_me.txt
+├── Account_vn.txt
+├── Account_bd.txt
+├── Account_pk.txt
+├── Account_sg.txt
+├── Account_br.txt
+├── Account_na.txt
+├── Account_id.txt
+├── Account_ru.txt
+├── Account_th.txt
 │
-├── /bio.html
-│   └── Bio interface
-│
-├── /api/config
-│   └── Tutorial configuration API
-│
-├── /terms
-│   └── Terms & Conditions
-│
-└── /static/
-    └── logo.png
+└── README.md
+```
+
+> *Note:* `main.py` represents the main Flask application in this example. If your Python file has another name, replace it accordingly.
 
 ---
 
-🛠️ Main JavaScript Functions
+## 📦 Requirements
 
-The frontend includes functions for:
+Make sure Python is installed on your system [cite: 16].
 
-toast()
-openModal()
-closeModal()
-copyToClip()
-insertAtCursor()
-addCustomColor()
-toggleColors()
-renderBioHtml()
-buildSpan()
-updatePreview()
-storeTokenForBio()
+### Required Python Packages [cite: 16]:
+* `requests` [cite: 16]
+* `pycryptodome` [cite: 16]
+* `flask` [cite: 16]
+* `urllib3` [cite: 16]
 
-Bio formatting
-
-The bio editor supports formatting codes such as:
-
-[b]Bold[/b]
-[i]Italic[/i]
-[u]Underline[/u]
-[c]Color[/c]
-[FFFFFF]Custom Color
+### Installation Command [cite: 16]:
+```bash
+# pip install requests pycryptodome flask urllib3
+```
 
 ---
 
-🎥 Tutorial Slider
+## ⚙️ Account Configuration
 
-Tutorials are loaded dynamically through:
+The source reads UID and password combinations from account files.
 
-/api/config
+### Format (`accounts.txt`):
+```text
+UID:PASSWORD
+UID:PASSWORD
+UID:PASSWORD
+```
 
-The slider supports:
+### Region-Specific Files:
+You can use dedicated files such as:
+* `Account_ind.txt`
+* `Account_bd.txt`
+* `Account_pk.txt`
 
-- Automatic rotation
-- Manual navigation
-- YouTube links
-- Dynamic thumbnails
-- Multiple tutorials
-- Responsive presentation
+*(The application also supports variations like `accounts_ind.txt` or `Accountind.txt`)*
 
----
-
-🔗 Connect
-
-Telegram
-
-https://t.me/MAZID_GMR
-
-Telegram Channel
-
-https://t.me/SEXTYMODS
-
-YouTube
-
-https://youtube.com/@mazid_gmr
-
-Instagram
-
-https://instagram.com/mazid_gmr
-
-GitHub
-
-https://github.com/MazidSpace
+> **Security Note:** Keep account credentials private and do not publish them in a public repository.
 
 ---
 
-👨‍💻 Author
+## 🌐 Region Configuration
 
-MazidSpace
+The application uses a region mapping similar to:
 
-Developer and creator of the FF Long Bio project.
-
----
-
-📜 License
-
-This repository is provided for educational and development purposes.
-
-Please respect Garena / Free Fire's Terms of Service and applicable laws when using or modifying the project.
-
----
-
-⚠️ Disclaimer
-
-This project is an independent third-party website and is not affiliated with, endorsed by, or sponsored by Garena or Free Fire.
-
-Users are responsible for how they use the tools provided by the project.
-
-Do not publish or share private account credentials, authentication tokens, or other sensitive information.
+```python
+REGION_MAP = {
+    "ind": "...",
+    "me": "...",
+    "vn": "...",
+    "bd": "...",
+    "pk": "...",
+    "sg": "...",
+    "br": "...",
+    "na": "...",
+    "id": "...",
+    "ru": "...",
+    "th": "...",
+}
+```
 
 ---
 
-⭐ Support
+## 🔑 JWT Authentication
 
-If you find the project useful, consider giving the repository a ⭐ and following the developer for future updates.
+* The source obtains JWT tokens through the configured external JWT API.
+* Tokens are stored in memory using the account UID as the key: `JWT_TOKEN = {}`
+* If a token is not already cached, the application attempts to obtain a new token before processing the request.
+* The background thread periodically refreshes tokens for configured accounts every **7 hours**.
 
-Latest website:
-https://ff-long-bio.is-great.org/
+---
 
-Current project focus:
-🚀 Free Fire Long Bio • 🎨 Bio Customization • 📱 Mobile UI • 🎬 Tutorials
+## 👤 Player Information
+
+The application can request player information using a configured player-information API. Returned information may include:
+
+* Nickname
+* UID
+* Region
+* Likes
+* Prime level
+* Level
+* Last login
+* Account creation time
+
+*(The `/spam` response also includes basic player information when successfully retrieved.)*
+
+---
+
+## 🔌 API Endpoints
+
+### 1. Health Check
+* **Route:** `GET /health`
+* **Description:** Checks the status of the application and displays account/token information.
+* **Example URL:** `http://localhost:5000/health`
+* **Sample Response:**
+```json
+{
+    "status": "ok",
+    "total_uid_password_count": 0,
+    "total_cached_tokens": 0,
+    "regional_tokens": {}
+}
+```
+
+### 2. Friend Request / Spam Operation
+* **Route:** `GET /spam`
+* **Description:** Processes the configured friend-request operation for a target UID.
+* **Basic Example:** `http://localhost:5000/spam?uid=123456789`
+* **Advanced Options:** 
+  * With count: `http://localhost:5000/spam?uid=123456789&count=5`
+  * With region: `http://localhost:5000/spam?uid=123456789&count=5&region=bd`
+
+> Use only accounts and targets that you are authorized to use, and respect the game's rules and applicable service limits.
+
+---
+
+## 📄 API Response Example
+
+A successful response may contain fields similar to:
+
+```json
+{
+    "Nickname": "Player",
+    "Uid": "123456789",
+    "Region": "IND",
+    "Likes": "100",
+    "Prime level": 1,
+    "Successful count": 5,
+    "Failed count": 0
+}
+```
+
+---
+
+## 🚀 Running the Project
+
+Start the application with:
+```bash
+python main.py
+```
+
+The Flask server will start on `http://0.0.0.0:5000`. For local testing, open `http://127.0.0.1:5000/health`.
+
+---
+
+## 🔄 Background Token Refresh Flow
+
+```text
+Application Start
+       │
+       ▼
+Load Account Files
+       │
+       ▼
+Request JWT Tokens
+       │
+       ▼
+Store Tokens In Memory
+       │
+       ▼
+Wait Approximately 7 Hours
+       │
+       ▼
+Refresh Tokens ──► (Repeat)
+```
+
+---
+
+## ⚠️ Error Handling
+
+The source includes handling for common situations such as:
+* Missing UID
+* Invalid region
+* Missing account files
+* JWT API timeout
+* Invalid JWT response
+* HTTP errors
+* Player information API failure
+* Invalid request responses
+* Missing configuration files
+
+---
+
+## 🔒 Security Notice
+
+Never upload the following information to a public repository:
+* UIDs & Passwords
+* JWT Tokens
+* API Keys & Private Credentials
+* Private Configurations
+
+Use environment variables or private configuration files where appropriate.
+
+---
+
+## 📌 Important Usage Notice
+
+This project depends on external services and game-related endpoints that may change without notice. The source may stop working if:
+* API endpoints or server endpoints change
+* Authentication requirements change
+* Game updates modify request formats
+* External APIs become unavailable or rate limits are introduced
+
+---
+
+## 🛡️ Original Credit & Attribution
+
+```text
+===============================================================
+                    SOURCE CREDIT
+===============================================================
+
+This Source Was Created and Developed By: [XEROX_MODS](https://t.me/XEROX_MODS)
+
+Official Telegram Channel: SEXTYMODS
+
+Please Do Not Remove, Edit, Hide, or Replace
+The Original Creator Credit.
+
+Creator Name  : [XEROX_MODS](https://t.me/XEROX_MODS)
+Telegram      : [SEXTYMODS](https://t.me/SEXTYMODS)
+Source Credit : [XEROX_MODS](https://t.me/XEROX_MODS)
+
+===============================================================
+```
+
+---
+
+## ⚖️ Disclaimer & License
+
+* **Disclaimer:** The creator does not guarantee uninterrupted operation because the project relies on external APIs and services. Users are responsible for their own use of the software, account credentials, and compliance with applicable terms.
+* **License:** No separate open-source license is specified. Unless the creator explicitly grants permission, do not commercially redistribute or relicense this source.
+
+---
+
