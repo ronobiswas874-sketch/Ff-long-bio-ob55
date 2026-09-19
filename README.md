@@ -1,288 +1,294 @@
-# XEROX_MODS — Free Fire Friend Request API
+# Free Fire Player Info & Wishlist API — Complete Developer Guide
 
-A Flask-based Free Fire utility API designed to process friend-request operations using configured account credentials, regional servers, JWT authentication, and player-information APIs.
-
----
-
-## 📌 Source Information
-
-* **Source Creator:** [XEROX_MODS](https://t.me/XEROX_MODS)
-* **Telegram Channel:** [SEXTYMODS](https://t.me/SEXTYMODS)
-
-> **Important:** Please do not remove, modify, hide, or replace the original creator credit when using, modifying, or sharing this source.
+Ei project-ti ekti advanced **Flask-based API utility** ja Free Fire player personal info ebong wishlist data khub druto ebong nirapohode fetch korar jonno toiri kora hoyeche [cite: 3]. Eta AES encryption, Protobuf decoding ebong automatic JWT token cache management support kore [cite: 3].
 
 ---
 
-## 🚀 Features
+## 📌 Source & Developer Information
 
-* Flask REST API
-* Free Fire regional server support
-* Multiple region configuration
-* Account loading from text files
-* Automatic JWT token retrieval
-* Background JWT token refresh
-* Cached JWT tokens for accounts
-* Player information lookup
-* Friend-request processing
-* Multi-threaded account processing
-* Health/status endpoint
-* Region-specific account files
-* Configurable request count
-* JSON API responses
-* Basic request error handling
+* **Source Creator:** [XEROX_MODS](https://t.me/SEXTYMODS) [cite: 3]
+* **Telegram Channel:** [SEXTYMODS](https://t.me/SEXTYMODS) [cite: 3]
+
+> **Important:** Source share ba modify korar somoy obossoi original creator credit (`XEROX_MODS` & `SEXTYMODS`) thik rakhben [cite: 3].
 
 ---
 
-## 🌍 Supported Regions
+## 🚀 Core Features
 
-The source currently contains configuration for the following regions:
+* **Flask REST API:** Halka ebong druto response deoyar jonno Flask framework bebohar kora hoyeche [cite: 3].
+* **Dynamic Region Support:** IND, BD, PK, VN, ME, ID, TH, BR, US, SAC soho bibhinno region-er server handle korte pare [cite: 3].
+* **JWT Token Sync & Caching:** Automatic JWT token fetch ebong in-memory cache system, ja API request ke fast rakhe [cite: 3].
+* **AES CBC Encryption:** Game server request er data secure rakhar jonno AES encryption use kora hoyeche [cite: 3].
+* **Protobuf to JSON:** Binary protobuf response ke easily readable JSON format-e convert kore [cite: 3].
+* **Real-time Metadata:** Response-er sathe Devloper name, Telegram link, Time Span ebong Asia/Kolkata timezone er date/time auto-inject hoy [cite: 3].
+* **Embedded Web UI:** Root URL (`/`) visit korlei ekti modern UI dekhabe jar maddhome API status ebong endpoints dekha jay [cite: 3].
 
-| Region Code | Server Name |
+---
+
+## ⚙️ Requirements & Installation Guide
+
+Nicher Python packages gulo apnar system-e install thaka lagbe [cite: 3]:
+
+```bash
+pip install flask requests pycryptodome protobuf urllib3
+```
+
+---
+
+## 🌐 Supported Regions & Server Mapping
+
+API ti bibhinno region er jonno nicher server gulo use kore [cite: 3]:
+
+| Region Code | Server Type / URL Endpoint |
 | :--- | :--- |
-| **IND** | India |
-| **ME** | Middle East |
-| **VN** | Vietnam |
-| **BD** | Bangladesh |
-| **PK** | Pakistan |
-| **SG** | Singapore |
-| **BR** | Brazil |
-| **NA** | North America |
-| **ID** | Indonesia |
-| **RU** | Russia |
-| **TH** | Thailand |
+| **IND** | India Server (`client.ind.freefiremobile.com`) [cite: 3] |
+| **BR / US / SAC** | Americas / US Server (`client.us.freefiremobile.com`) [cite: 3] |
+| **BD / PK / VN / ME / ID / TH** | Global BP Server (`clientbp.ggpolarbear.com`) [cite: 3] |
 
 ---
 
-## 📁 Project Structure
+## 🔌 API Endpoints & Usage Details
 
-```text
-project/
-│
-├── main.py
-├── byte.py
-├── accounts.txt
-│
-├── Account_ind.txt
-├── Account_me.txt
-├── Account_vn.txt
-├── Account_bd.txt
-├── Account_pk.txt
-├── Account_sg.txt
-├── Account_br.txt
-├── Account_na.txt
-├── Account_id.txt
-├── Account_ru.txt
-├── Account_th.txt
-│
-└── README.md
-```
+### 1. Home Page UI
+* **Route:** `GET /`
+* **Description:** API running status ebong quick endpoint access deoyar jonno UI render kore [cite: 3].
 
-> *Note:* `main.py` represents the main Flask application in this example. If your Python file has another name, replace it accordingly.
+### 2. Player Info API
+* **Route:** `GET /info`
+* **Query Parameters:**
+  * `uid` (Required): Player er Free Fire UID [cite: 3].
+  * `region` (Optional): Server region code (default: `ind`) [cite: 3].
+  * `key` (Optional): Custom AES encryption key [cite: 3].
+  * `iv` (Optional): Custom AES initialization vector [cite: 3].
+* **Example URL:** 
+  ```text
+  http://localhost:1080/info?uid=5038779552&region=ind
+  ```
 
----
-
-## 📦 Requirements
-
-Make sure Python is installed on your system [cite: 16].
-
-### Required Python Packages [cite: 16]:
-* `requests` [cite: 16]
-* `pycryptodome` [cite: 16]
-* `flask` [cite: 16]
-* `urllib3` [cite: 16]
-
-### Installation Command [cite: 16]:
-```bash
-# pip install requests pycryptodome flask urllib3
-```
+### 3. Wishlist Info API
+* **Route:** `GET /wishlist`
+* **Query Parameters:**
+  * `uid` (Required): Player er Free Fire UID [cite: 3].
+  * `region` (Optional): Server region code [cite: 3].
+* **Example URL:** 
+  ```text
+  http://localhost:1080/wishlist?uid=5038779552&region=ind
+  ```
 
 ---
 
-## ⚙️ Account Configuration
-
-The source reads UID and password combinations from account files.
-
-### Format (`accounts.txt`):
-```text
-UID:PASSWORD
-UID:PASSWORD
-UID:PASSWORD
-```
-
-### Region-Specific Files:
-You can use dedicated files such as:
-* `Account_ind.txt`
-* `Account_bd.txt`
-* `Account_pk.txt`
-
-*(The application also supports variations like `accounts_ind.txt` or `Accountind.txt`)*
-
-> **Security Note:** Keep account credentials private and do not publish them in a public repository.
-
----
-
-## 🌐 Region Configuration
-
-The application uses a region mapping similar to:
-
-```python
-REGION_MAP = {
-    "ind": "...",
-    "me": "...",
-    "vn": "...",
-    "bd": "...",
-    "pk": "...",
-    "sg": "...",
-    "br": "...",
-    "na": "...",
-    "id": "...",
-    "ru": "...",
-    "th": "...",
-}
-```
-
----
-
-## 🔑 JWT Authentication
-
-* The source obtains JWT tokens through the configured external JWT API.
-* Tokens are stored in memory using the account UID as the key: `JWT_TOKEN = {}`
-* If a token is not already cached, the application attempts to obtain a new token before processing the request.
-* The background thread periodically refreshes tokens for configured accounts every **7 hours**.
-
----
-
-## 👤 Player Information
-
-The application can request player information using a configured player-information API. Returned information may include:
-
-* Nickname
-* UID
-* Region
-* Likes
-* Prime level
-* Level
-* Last login
-* Account creation time
-
-*(The `/spam` response also includes basic player information when successfully retrieved.)*
-
----
-
-## 🔌 API Endpoints
-
-### 1. Health Check
-* **Route:** `GET /health`
-* **Description:** Checks the status of the application and displays account/token information.
-* **Example URL:** `http://localhost:5000/health`
-* **Sample Response:**
-```json
-{
-    "status": "ok",
-    "total_uid_password_count": 0,
-    "total_cached_tokens": 0,
-    "regional_tokens": {}
-}
-```
-
-### 2. Friend Request / Spam Operation
-* **Route:** `GET /spam`
-* **Description:** Processes the configured friend-request operation for a target UID.
-* **Basic Example:** `http://localhost:5000/spam?uid=123456789`
-* **Advanced Options:** 
-  * With count: `http://localhost:5000/spam?uid=123456789&count=5`
-  * With region: `http://localhost:5000/spam?uid=123456789&count=5&region=bd`
-
-> Use only accounts and targets that you are authorized to use, and respect the game's rules and applicable service limits.
-
----
-
-## 📄 API Response Example
-
-A successful response may contain fields similar to:
+## 📄 Complete Example JSON Response (`/info`)
 
 ```json
 {
-    "Nickname": "Player",
-    "Uid": "123456789",
-    "Region": "IND",
-    "Likes": "100",
-    "Prime level": 1,
-    "Successful count": 5,
-    "Failed count": 0
+  "basic_info": {
+    "account_id": 5038779552,
+    "account_type": 1,
+    "nickname": "₦₲ㅤㅤᏒAHULㅤ모ㅤ",
+    "region": "IND",
+    "level": 74,
+    "exp": 4089629,
+    "banner_id": 901042013,
+    "head_pic": 902000123,
+    "rank": 325,
+    "ranking_points": 5700,
+    "has_elite_pass": false,
+    "badge_cnt": 90,
+    "badge_id": 1001000100,
+    "season_id": 53,
+    "liked": 30212,
+    "show_rank": true,
+    "last_login_at": 1789790764,
+    "cs_rank": 322,
+    "cs_ranking_points": 114,
+    "weapon_skin_shows": [907103017, 912040001],
+    "max_rank": 325,
+    "cs_max_rank": 322,
+    "peak_rank_pos": 0,
+    "account_prefers": {
+      "br_pregame_show": 0,
+      "hide_clan_info": false,
+      "hide_weapon_skins": false,
+      "show_elite_pass": false,
+      "show_title": false,
+      "raw_field_3": 0
+    },
+    "create_at": 1642525530,
+    "title": 904590059,
+    "external_icon_info": {
+      "status": "ICON_INACTIVE",
+      "show_type": "ICON_VISIBLE",
+      "raw_field_3": 1
+    },
+    "release_version": "OB55",
+    "show_br_rank": false,
+    "show_cs_rank": false,
+    "social_highlights": {
+      "entries": []
+    },
+    "item_tag_info": "0a0a080110ceb3bfd50618010a0a0806109bc2b9d50618010a0a0802108afdc2d50618010a0a080410b0c7b9d50618040a0a080510a7b8bfd5061801",
+    "hippo_rank": 19,
+    "hippo_ranking_points": 19,
+    "cs_rank_entries": [],
+    "raw_field_60": 0,
+    "prime_info": {
+      "prime_level": 3
+    }
+  },
+  "profile_info": {
+    "avatar_id": 102000007,
+    "cosmetic_items": [50],
+    "equipped_skills": [211000598, 211000433, 203000096, 205000059, 204000181, 214000000],
+    "pve_primary_weapon": 1,
+    "skill_slots": [
+      {
+        "slot_index": 0,
+        "skill_id": 606
+      },
+      {
+        "slot_index": 1,
+        "skill_id": 5301
+      },
+      {
+        "slot_index": 2,
+        "skill_id": 1803
+      },
+      {
+        "slot_index": 3,
+        "skill_id": 7406
+      }
+    ],
+    "skin_unlock_time": 1,
+    "raw_field_12": 1
+  },
+  "ranking_leaderboard_pos": 0,
+  "news": [],
+  "history_ep_info": [],
+  "clan_basic_info": {
+    "clan_id": 0,
+    "clan_name": "",
+    "captain_id": 0,
+    "clan_level": 0,
+    "max_members": 0,
+    "current_members": 0
+  },
+  "captain_basic_info": {
+    "account_id": 0,
+    "account_type": 0,
+    "nickname": "",
+    "region": "",
+    "level": 0,
+    "exp": 0,
+    "banner_id": 0,
+    "head_pic": 0,
+    "rank": 0,
+    "ranking_points": 0,
+    "has_elite_pass": false,
+    "badge_cnt": 0,
+    "badge_id": 0,
+    "season_id": 0,
+    "liked": 0,
+    "show_rank": false,
+    "last_login_at": 0,
+    "cs_rank": 0,
+    "cs_ranking_points": 0,
+    "weapon_skin_shows": [],
+    "max_rank": 0,
+    "cs_max_rank": 0,
+    "peak_rank_pos": 0,
+    "account_prefers": {
+      "br_pregame_show": 0,
+      "hide_clan_info": false,
+      "hide_weapon_skins": false,
+      "show_elite_pass": false,
+      "show_title": false,
+      "raw_field_3": 0
+    },
+    "create_at": 0,
+    "title": 0,
+    "external_icon_info": {
+      "status": "ICON_INACTIVE",
+      "show_type": "ICON_HIDDEN",
+      "raw_field_3": 0
+    },
+    "release_version": "",
+    "show_br_rank": false,
+    "show_cs_rank": false,
+    "social_highlights": {
+      "entries": []
+    },
+    "item_tag_info": "",
+    "hippo_rank": 0,
+    "hippo_ranking_points": 0,
+    "cs_rank_entries": [],
+    "raw_field_60": 0,
+    "prime_info": {
+      "prime_level": 0
+    }
+  },
+  "pet_info": {
+    "pet_id": 1300000091,
+    "pet_name": "GOOD_BOY",
+    "level": 7,
+    "exp": 6019,
+    "is_selected": true,
+    "skin_id": 1310000093,
+    "selected_skill_id": 1315000011
+  },
+  "social_info": {
+    "account_id": 5038779552,
+    "gender": "GENDER_UNKNOWN",
+    "language": 17,
+    "social_highlight": "Battle in Style!",
+    "privacy": "PRIVACY_FRIENDS_ONLY",
+    "region_stats": [
+      {
+        "region_code": "",
+        "total_matches": 0,
+        "wins": 0,
+        "highest_rank": 0,
+        "last_season_played": 0,
+        "last_match_time": 0
+      }
+    ]
+  },
+  "diamond_cost_res": {
+    "diamond_cost": 390,
+    "currency_type": 0,
+    "discount_percent": 0
+  },
+  "credit_score_info": {
+    "score": 100,
+    "status": 1,
+    "start": 1789662607,
+    "end": 1789921807,
+    "reason": 2
+  },
+  "pre_veteran_action": {
+    "action_type": 0,
+    "action_expire_time": 0
+  },
+  "equipped_achievements": [],
+  "mmr_ratings": [],
+  "Devloper": "XEROX_MODS",
+  "Telegram": "SEXTYMODS",
+  "Time_Spne": "3.81s",
+  "Time": "10:09 AM, Saturday, September 19, 2026"
 }
 ```
 
 ---
 
-## 🚀 Running the Project
+## 🚀 How to Run the Project Locally
 
-Start the application with:
-```bash
-python main.py
-```
+1. Sohojoge sobi ekti folder-e rakhoon (`main.py`, protobuf files, etc.) [cite: 3].
+2. Terminal ba Command Prompt open kore project directory te jan [cite: 3].
+3. Nicher command diye server start korun [cite: 3]:
+   ```bash
+   python main.py
+   ```
+4. Server ti default vabe `http://0.0.0.0:1080` port e cholbe [cite: 3]. Apni apnar browser ba API client (Postman/Insomnia) diye test korte paren [cite: 3].
 
-The Flask server will start on `http://0.0.0.0:5000`. For local testing, open `http://127.0.0.1:5000/health`.
-
----
-
-## 🔄 Background Token Refresh Flow
-
-```text
-Application Start
-       │
-       ▼
-Load Account Files
-       │
-       ▼
-Request JWT Tokens
-       │
-       ▼
-Store Tokens In Memory
-       │
-       ▼
-Wait Approximately 7 Hours
-       │
-       ▼
-Refresh Tokens ──► (Repeat)
-```
-
----
-
-## ⚠️ Error Handling
-
-The source includes handling for common situations such as:
-* Missing UID
-* Invalid region
-* Missing account files
-* JWT API timeout
-* Invalid JWT response
-* HTTP errors
-* Player information API failure
-* Invalid request responses
-* Missing configuration files
-
----
-
-## 🔒 Security Notice
-
-Never upload the following information to a public repository:
-* UIDs & Passwords
-* JWT Tokens
-* API Keys & Private Credentials
-* Private Configurations
-
-Use environment variables or private configuration files where appropriate.
-
----
-
-## 📌 Important Usage Notice
-
-This project depends on external services and game-related endpoints that may change without notice. The source may stop working if:
-* API endpoints or server endpoints change
-* Authentication requirements change
-* Game updates modify request formats
-* External APIs become unavailable or rate limits are introduced
 
 ---
 
@@ -293,16 +299,16 @@ This project depends on external services and game-related endpoints that may ch
                     SOURCE CREDIT
 ===============================================================
 
-This Source Was Created and Developed By: [XEROX_MODS](https://t.me/XEROX_MODS)
+This Source Was Created and Developed By: XEROX_MODS
 
 Official Telegram Channel: SEXTYMODS
 
 Please Do Not Remove, Edit, Hide, or Replace
 The Original Creator Credit.
 
-Creator Name  : [XEROX_MODS](https://t.me/XEROX_MODS)
-Telegram      : [SEXTYMODS](https://t.me/SEXTYMODS)
-Source Credit : [XEROX_MODS](https://t.me/XEROX_MODS)
+Creator Name  : XEROX_MODS
+Telegram      : SEXTYMODS
+Source Credit : XEROX_MODS
 
 ===============================================================
 ```
